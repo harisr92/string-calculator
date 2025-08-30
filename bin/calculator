@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/string_calculator'
+
+def show_usage
+  puts "Usage: calculator add \"numbers\""
+  puts "Examples:"
+  puts "  calculator add \"1,2,3\""
+  puts "  calculator add \"1\\n2,3\""
+  puts "  calculator add \"//;\\n1;2;3\""
+end
+
+if ARGV.length != 2 || ARGV[0] != 'add'
+  show_usage
+  exit 1
+end
+
+begin
+  input = ARGV[1].gsub('\\n', "\n")
+  result = StringCalculator.add(input)
+  puts result
+rescue StringCalculator::NegativeNumberError => e
+  puts "Error: #{e.message}"
+  exit 1
+rescue => e
+  puts "Error: #{e.message}"
+  exit 1
+end
