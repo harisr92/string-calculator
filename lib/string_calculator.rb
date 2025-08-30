@@ -3,9 +3,9 @@
 require_relative 'string_calculator/parser/string_parser'
 require_relative 'string_calculator/parser/delimiter_parser'
 require_relative 'string_calculator/parser/input_cleaner'
-require_relative 'string_calculator/calculator'
-require_relative 'string_calculator/runner'
-require_relative 'string_calculator/addition_service'
+require_relative 'string_calculator/core/calculator'
+require_relative 'string_calculator/core/runner'
+require_relative 'string_calculator/core/addition_service'
 require_relative 'string_calculator/errors'
 
 module StringCalculator

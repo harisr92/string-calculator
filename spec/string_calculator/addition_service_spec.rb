@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/string_calculator/addition_service'
-
 RSpec.describe StringCalculator::AdditionService do
   let(:service) { described_class.new }
 
