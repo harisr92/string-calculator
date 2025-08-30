@@ -13,14 +13,15 @@ module StringCalculator
 
       def extract_delimiters(input)
         delimiter_section, = input.split("\n", 2)
+
         custom_delimiter =
           if delimiter_section.start_with?('//[') && delimiter_section.end_with?(']')
-            delimiter_section[3..-2]
+            delimiter_section.scan(/\[(.*?)\]/).flatten
           else
-            delimiter_section[2]
+            [delimiter_section[2]]
           end
 
-        [custom_delimiter, "\n"]
+        [*custom_delimiter, "\n"]
       end
     end
   end
