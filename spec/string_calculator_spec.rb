@@ -23,5 +23,9 @@ RSpec.describe StringCalculator do
     it 'handles numbers with spaces' do
       expect(StringCalculator.add(' 1 , 2 , 3 2 ')).to eq(35)
     end
+
+    it 'handles new lines as separators' do
+      expect(StringCalculator.add("1\n2,3")).to eq(6)
+    end
   end
 end

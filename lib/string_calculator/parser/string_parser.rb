@@ -10,7 +10,13 @@ module StringCalculator
       end
 
       def parse
-        @input.split(',').map { |num| num.strip.split.join.to_i }
+        @input.split(splitter).map { |num| num.strip.split.join.to_i }
+      end
+
+      private
+
+      def splitter
+        /,|\n/
       end
     end
   end
