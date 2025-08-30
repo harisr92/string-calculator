@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe StringCalculator::Runner do
   describe '.run' do
     it 'returns the sum of numbers in a comma-separated string' do

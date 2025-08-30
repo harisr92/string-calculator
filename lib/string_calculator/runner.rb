@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A simple runner class that takes an array of numbers and returns their sum.
 
 module StringCalculator

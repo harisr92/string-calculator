@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # lib/string_parser.rb
 
 module StringCalculator
