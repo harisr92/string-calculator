@@ -17,7 +17,7 @@ if ARGV.length != 2 || ARGV[0] != 'add'
 end
 
 begin
-  input = ARGV[1]
+  input = ARGV[1].gsub('\\n', "\n")
   result = StringCalculator.add(input)
   puts result
 rescue StringCalculator::NegativeNumberError => e
