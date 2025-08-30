@@ -26,5 +26,14 @@ RSpec.describe StringCalculator::Parser::StringParser do
       parser = described_class.new("1\n2,3")
       expect(parser.parse).to eq([1, 2, 3])
     end
+
+    context 'with custom delimiter' do
+      let(:delimiters) { [';', "\n"] }
+
+      it 'handles custom single-character delimiters' do
+        parser = described_class.new('1;2;3', delimiters)
+        expect(parser.parse).to eq([1, 2, 3])
+      end
+    end
   end
 end

@@ -5,8 +5,9 @@
 module StringCalculator
   module Parser
     class StringParser
-      def initialize(input)
+      def initialize(input, delimiters = [])
         @input = input
+        @delimiters = delimiters
       end
 
       def parse
@@ -16,7 +17,11 @@ module StringCalculator
       private
 
       def splitter
-        /,|\n/
+        if @delimiters.nil? || @delimiters.empty?
+          /,|\n/
+        else
+          Regexp.union(@delimiters)
+        end
       end
     end
   end
