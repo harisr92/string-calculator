@@ -6,6 +6,7 @@ require_relative 'string_calculator/parser/input_cleaner'
 require_relative 'string_calculator/calculator'
 require_relative 'string_calculator/runner'
 require_relative 'string_calculator/addition_service'
+require_relative 'string_calculator/errors'
 
 module StringCalculator
   VERSION = '0.0.1'
