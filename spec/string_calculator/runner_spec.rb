@@ -1,17 +1,20 @@
 # frozen_string_literal: true
 
 RSpec.describe StringCalculator::Runner do
-  describe '.run' do
-    it 'returns the sum of numbers in a comma-separated string' do
-      expect(described_class.run([1, 2, 3])).to eq(6)
+  describe '#execute' do
+    let(:mock_parser) { instance_double(StringCalculator::Parser::StringParser, parse: [1, 2, 3]) }
+    let(:mock_calculator) { instance_double(StringCalculator::Calculator, sum: 6) }
+
+    it 'uses the injected parser to parse input' do
+      runner = described_class.new(parser: mock_parser, calculator: mock_calculator)
+      expect(runner.execute).to eq(6)
+      expect(mock_parser).to have_received(:parse)
     end
 
-    it 'returns 0 for an empty string' do
-      expect(described_class.run([])).to eq(0)
-    end
-
-    it 'handles single number strings' do
-      expect(described_class.run([5])).to eq(5)
+    it 'uses injected calculator for computation' do
+      runner = described_class.new(parser: mock_parser, calculator: mock_calculator)
+      expect(runner.execute).to eq(6)
+      expect(mock_calculator).to have_received(:sum).with([1, 2, 3])
     end
   end
 end
