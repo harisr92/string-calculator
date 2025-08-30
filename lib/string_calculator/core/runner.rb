@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'validators/validate'
+require_relative '../validators/validate'
 
 # A runner class that orchestrates parsing and calculation operations.
 module StringCalculator

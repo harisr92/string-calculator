@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'default_delimiter_strategy'
-require_relative 'custom_delimiter_strategy'
+require_relative 'strategies/default_delimiter_strategy'
+require_relative 'strategies/custom_delimiter_strategy'
 
 module StringCalculator
   module Parser

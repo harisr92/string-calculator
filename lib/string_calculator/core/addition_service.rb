@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'component_factory'
-require_relative 'runner'
+require_relative '../factories/component_factory'
+require_relative '../core/runner'
 
 module StringCalculator
   class AdditionService
