@@ -1,19 +1,33 @@
 # frozen_string_literal: true
 
-#  Cleans the input string by removing custom delimiter definitions.
+require_relative 'custom_delimiter_cleaning_strategy'
+require_relative 'default_cleaning_strategy'
+
 module StringCalculator
   module Parser
     class InputCleaner
-      def initialize(input)
+      def initialize(input, strategies = nil)
         @input = input
+        @strategies = strategies || default_strategies
       end
 
       def clean
-        if @input.start_with?('//')
-          @input.split("\n", 2)[1] || ''
-        else
-          @input
-        end
+        strategy = find_applicable_strategy
+        strategy.clean(@input)
+      end
+
+      private
+
+      def find_applicable_strategy
+        @strategies.find { |strategy| strategy.applies_to?(@input) } ||
+          raise(ArgumentError, 'No applicable cleaning strategy found')
+      end
+
+      def default_strategies
+        [
+          CustomDelimiterCleaningStrategy.new,
+          DefaultCleaningStrategy.new
+        ]
       end
     end
   end
