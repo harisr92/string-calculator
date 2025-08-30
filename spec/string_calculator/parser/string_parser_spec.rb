@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe StringCalculator::Parser::StringParser do
   describe '#parse' do
     it 'parses a comma-separated string into an array of integers' do
