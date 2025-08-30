@@ -11,7 +11,13 @@ module StringCalculator
       end
 
       def parse
-        @input.split(splitter).map { |num| num.strip.split.join.to_i }
+        nums = @input.split(splitter).map do |num|
+          num = num.strip.split.join.to_i
+
+          num if num <= 1000
+        end
+
+        nums.compact
       end
 
       private

@@ -35,5 +35,17 @@ RSpec.describe StringCalculator::Parser::StringParser do
         expect(parser.parse).to eq([1, 2, 3])
       end
     end
+
+    context 'when numbers are bigger than 1000' do
+      it 'includes numbers less than or equal to 1000' do
+        parser = described_class.new('2,1000,6')
+        expect(parser.parse).to eq([2, 1000, 6])
+      end
+
+      it 'ignores numbers greater than 1000' do
+        parser = described_class.new('2,1001,6')
+        expect(parser.parse).to eq([2, 6])
+      end
+    end
   end
 end
