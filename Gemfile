@@ -8,4 +8,5 @@ group :development do
   gem 'rack-test'
   gem 'rake'
   gem 'rspec'
+  gem 'rubocop', require: false
 end
