@@ -1,24 +1,33 @@
 # frozen_string_literal: true
 
-# Parses custom delimiters from the input string
+require_relative 'default_delimiter_strategy'
+require_relative 'custom_delimiter_strategy'
 
 module StringCalculator
   module Parser
     class DelimiterParser
-      def initialize(input)
+      def initialize(input, strategies = nil)
         @input = input
+        @strategies = strategies || default_strategies
       end
 
       def parse
-        delimiters = ["\n"]
+        strategy = find_applicable_strategy
+        strategy.extract_delimiters(@input).uniq
+      end
 
-        if @input.start_with?('//')
-          delimiters.unshift(@input[2])
-        else
-          delimiters.unshift(',')
-        end
+      private
 
-        delimiters.uniq
+      def find_applicable_strategy
+        @strategies.find { |strategy| strategy.applies_to?(@input) } ||
+          raise(ArgumentError, 'No applicable delimiter strategy found')
+      end
+
+      def default_strategies
+        [
+          CustomDelimiterStrategy.new,
+          DefaultDelimiterStrategy.new
+        ]
       end
     end
   end

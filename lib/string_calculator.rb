@@ -5,19 +5,15 @@ require_relative 'string_calculator/parser/delimiter_parser'
 require_relative 'string_calculator/parser/input_cleaner'
 require_relative 'string_calculator/calculator'
 require_relative 'string_calculator/runner'
+require_relative 'string_calculator/addition_service'
 
 module StringCalculator
   VERSION = '0.0.1'
 
   class << self
-    def add(input)
-      delimiters = Parser::DelimiterParser.new(input).parse
-      cleaned_input = Parser::InputCleaner.new(input).clean
-
-      parser = Parser::StringParser.new(cleaned_input, delimiters)
-      calculator = Calculator.new
-
-      Runner.new(parser: parser, calculator: calculator).execute
+    def add(input, service = nil)
+      service ||= AdditionService.new
+      service.add(input)
     end
   end
 end
