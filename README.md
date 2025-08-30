@@ -77,6 +77,33 @@ This should be solved incrementally, following TDD principles:
    bundle exec rspec
    ```
 
+## CLI Usage
+
+A command-line interface is provided for using the string calculator:
+
+```bash
+./bin/calculator add "numbers"
+```
+
+### Examples:
+
+```bash
+# Basic addition
+./bin/calculator add "1,2,3"               # Output: 6
+
+# With newlines
+./bin/calculator add "1\n2,3"              # Output: 6
+
+# Custom delimiter
+./bin/calculator add "//;\n1;2;3"          # Output: 6
+
+# Multi-character delimiter
+./bin/calculator add "//[***]\n1***2***3"  # Output: 6
+
+# Multiple delimiters
+./bin/calculator add "//[*][%]\n1*2%3"     # Output: 6
+```
+
 ## TDD Process
 
 Follow these TDD principles while implementing:
