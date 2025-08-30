@@ -1,5 +1,5 @@
-require_relative './string_calculator/parser/string_parser.rb'
-require_relative './string_calculator/runner.rb'
+require_relative './string_calculator/parser/string_parser'
+require_relative './string_calculator/runner'
 
 module StringCalculator
   VERSION='0.0.1'

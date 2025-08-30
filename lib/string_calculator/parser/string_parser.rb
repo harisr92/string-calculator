@@ -8,7 +8,7 @@ module StringCalculator
       end
 
       def parse
-        @input.split(',').map(&:to_i)
+        @input.split(',').map { |num| num.strip.split.join.to_i }
       end
     end
   end
