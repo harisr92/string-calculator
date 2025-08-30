@@ -1,4 +1,4 @@
-# lib/runner.rb
+# A simple runner class that takes an array of numbers and returns their sum.
 
 module StringCalculator
   class Runner
