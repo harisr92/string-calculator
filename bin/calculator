@@ -5,19 +5,31 @@ require_relative '../lib/string_calculator'
 
 def show_usage
   puts "Usage: calculator add \"numbers\""
+  puts "       cat file.txt | calculator add"
   puts "Examples:"
   puts "  calculator add \"1,2,3\""
   puts "  calculator add \"1\\n2,3\""
   puts "  calculator add \"//;\\n1;2;3\""
+  puts "  cat input.txt | calculator add"
 end
 
-if ARGV.length != 2 || ARGV[0] != 'add'
+if ARGV.length == 0 || ARGV[0] != 'add'
   show_usage
   exit 1
 end
 
 begin
-  input = ARGV[1].gsub('\\n', "\n")
+  if ARGV.length == 1
+    # Reading from pipe/stdin
+    input = $stdin.read.chomp.gsub('\\n', "\n")
+  elsif ARGV.length == 2
+    # Reading from command line argument
+    input = ARGV[1].gsub('\\n', "\n")
+  else
+    show_usage
+    exit 1
+  end
+  
   result = StringCalculator.add(input)
   puts result
 rescue StringCalculator::NegativeNumberError => e
