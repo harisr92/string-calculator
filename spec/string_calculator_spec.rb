@@ -62,5 +62,11 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add("//[**][%%]\n1**2%%3")).to eq(6)
       end
     end
+
+    context 'handles other calculation operations' do
+      it 'should run the calculations' do
+        expect(StringCalculator.add('2*13,1')).to eq(27)
+      end
+    end
   end
 end
