@@ -10,3 +10,5 @@ group :development do
   gem 'rspec'
   gem 'rubocop', require: false
 end
+
+gem 'pry', '~> 0.15.2', group: :development

@@ -5,7 +5,7 @@ RSpec.describe StringCalculator::Calculator do
 
   describe '#sum' do
     it 'returns the sum of numbers' do
-      expect(calculator.sum([1, 2, 3])).to eq(6)
+      expect(calculator.sum([[1], [2], [3]])).to eq(6)
     end
 
     it 'returns 0 for empty array' do
@@ -13,11 +13,11 @@ RSpec.describe StringCalculator::Calculator do
     end
 
     it 'handles single number' do
-      expect(calculator.sum([5])).to eq(5)
+      expect(calculator.sum([[5]])).to eq(5)
     end
 
     it 'handles negative numbers' do
-      expect(calculator.sum([-1, 2, -3])).to eq(-2)
+      expect(calculator.sum([[-1], [2], [-3]])).to eq(-2)
     end
   end
 end
